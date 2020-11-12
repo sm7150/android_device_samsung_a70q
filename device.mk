@@ -18,7 +18,6 @@ PRODUCT_ENFORCE_RRO_TARGETS := \
 
 # Properties
 -include $(LOCAL_PATH)/system_prop.mk
--include $(LOCAL_PATH)/vendor_prop.mk
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -51,20 +50,17 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint feature
 PRODUCT_PACKAGES += \
-    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.a70q
+    lineage.biometrics.fingerprint.inscreen@1.0-service.a70q
 
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
+    vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     android.hardware.light@2.0-impl \
     lights.qcom
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung-a70q
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -82,30 +78,9 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.class_late.sh \
-    init.class_main.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
-    init.qcom.usb.sh \
-    init.qti.qseecomd.sh \
     fstab.qcom \
-    init.carrier.rc \
-    init.display.rc \
-    init.msm.usb.configfs.rc \
     init.qcom.rc \
-    init.qcom.usb.rc \
-    init.target.rc \
-    init.vendor.rilchip.rc \
-    init.vendor.rilcommon.rc \
-    ueventd.qcom.rc \
-    wifi_qcom.rc \
-    wifi.rc
-
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
+    init.target.rc
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -133,12 +108,12 @@ PRODUCT_BOOT_JARS += \
 
 # Touchscreen
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung \
+    lineage.touch@1.0-service.samsung \
     libtinyxml2
 
 # Trust HAL
 PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
+    lineage.trust@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -157,3 +132,6 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# VNDK
+PRODUCT_EXTRA_VNDK_VERSIONS := 29
