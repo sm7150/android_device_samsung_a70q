@@ -132,6 +132,3 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
-
-# VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 29
