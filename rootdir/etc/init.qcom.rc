@@ -22,6 +22,10 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+on early-init
+    # Don't mount products
+    unmount /product
+    unmount /product_services
 
 on init
     # Disable vendor overlay
@@ -44,7 +48,6 @@ on post-fs-data
     restorecon --recursive --force /mnt/vendor/efs
     restorecon --recursive --force /mnt/vendor/cpefs
     restorecon --recursive --force /sec_efs
-    restorecon --recursive /carrier
 
 on boot
     # Fingerprint
@@ -924,8 +927,8 @@ on boot
     chmod 0660 /sys/class/power_supply/battery/wc_tx_mfc_vin_from_uno
     chown system radio /sys/class/power_supply/battery/wc_tx_mfc_iin_from_uno
     chmod 0660 /sys/class/power_supply/battery/wc_tx_mfc_iin_from_uno
-	chown system radio /sys/class/power_supply/battery/wc_tx_avg_curr
-	chmod 0660 /sys/class/power_supply/battery/wc_tx_avg_curr
+    chown system radio /sys/class/power_supply/battery/wc_tx_avg_curr
+    chmod 0660 /sys/class/power_supply/battery/wc_tx_avg_curr
     chown system radio /sys/class/power_supply/battery/wc_tx_total_pwr
     chmod 0660 /sys/class/power_supply/battery/wc_tx_total_pwr
     chown system radio /sys/class/power_supply/battery/wc_tx_id
@@ -934,8 +937,8 @@ on boot
     chmod 0660 /sys/class/power_supply/battery/wc_auth_adt_sent
     chown system radio /sys/class/power_supply/battery/wc_duo_rx_power
     chmod 0660 /sys/class/power_supply/battery/wc_duo_rx_power
-	chown system radio /sys/class/power_supply/battery/ext_event
-	chmod 0660 /sys/class/power_supply/battery/ext_event
+    chown system radio /sys/class/power_supply/battery/ext_event
+    chmod 0660 /sys/class/power_supply/battery/ext_event
     chown system system /sys/class/power_supply/battery/batt_shipmode_test
     chmod 0660 /sys/class/power_supply/battery/batt_shipmode_test
     chown system radio /sys/class/power_supply/battery/vbyp_voltage
@@ -962,8 +965,8 @@ on boot
     chmod 0660 /sys/class/power_supply/battery/direct_charging_step
     chown system radio /sys/class/power_supply/battery/direct_charging_total_step
     chmod 0660 /sys/class/power_supply/battery/direct_charging_total_step
-	chown system radio /sys/class/power_supply/battery/switch_charging_source
-	chmod 0660 /sys/class/power_supply/battery/switch_charging_source
+    chown system radio /sys/class/power_supply/battery/switch_charging_source
+    chmod 0660 /sys/class/power_supply/battery/switch_charging_source
     chown system system /sys/class/power_supply/battery/dchg_adc_mode_ctrl
     chmod 0664 /sys/class/power_supply/battery/dchg_adc_mode_ctrl
     chown system radio /sys/class/power_supply/battery/boot_complete
@@ -1042,10 +1045,3 @@ on property:sys.boot_completed=1
     mkdir /data/vendor/tzstorage/sys/class 0711 system system
     mkdir /data/vendor/tzstorage/sys/class/sec 0711 system system
     symlink /sys/class/sec/tsp /data/vendor/tzstorage/sys/class/sec/tsp
-
-
-#qfp fingerprint daemon
-service qfp-daemon /vendor/bin/qfp-daemon
-	class late_start
-	user system
-	group system drmrpc diag input

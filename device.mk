@@ -108,7 +108,6 @@ PRODUCT_BOOT_JARS += \
 
 # Touchscreen
 PRODUCT_PACKAGES += \
-    lineage.touch@1.0-service.samsung \
     libtinyxml2
 
 # Trust HAL

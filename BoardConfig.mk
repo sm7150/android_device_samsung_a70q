@@ -14,6 +14,9 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 
+ENABLE_CPUSETS := true
+ENABLE_SCHEDBOOST := true
+
 TARGET_USES_64_BIT_BINDER := true
 
 # Bootloader
@@ -31,7 +34,7 @@ BOARD_KERNEL_CMDLINE += video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=
 BOARD_KERNEL_CMDLINE += swiotlb=1 androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image nokaslr printk.devkmsg=on loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+# BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_OFFSET      := 0x00008000
@@ -56,6 +59,9 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno612
 # Audio
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
@@ -126,8 +132,25 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 BOARD_VNDK_VERSION := current
 
 # SELinux
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/qcom/sepolicy/qva/private \
+    device/qcom/sepolicy/generic/private \
+    device/samsung_slsi/sepolicy/common/private \
+    $(DEVICE_PATH)/sepolicy/private
+
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/public \
+    device/qcom/sepolicy/qva/public \
+    device/samsung_slsi/sepolicy/common/public
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/product/public
+
+PRODUCT_PRIVATE_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/product/private
+
+BOARD_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy/vendor
 
 # Inherit from the proprietary version
 -include vendor/samsung/a70q/BoardConfigVendor.mk
