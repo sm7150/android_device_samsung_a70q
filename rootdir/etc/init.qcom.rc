@@ -22,11 +22,6 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-on early-init
-    # Don't mount products
-    unmount /product
-    unmount /product_services
-
 on init
     # Disable vendor overlay
     mount none /vendor/lost+found /vendor/overlay bind
