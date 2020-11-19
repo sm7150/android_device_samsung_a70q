@@ -115,13 +115,13 @@ Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t v
     }
 
     if (acquiredInfo == FINGERPRINT_ACQUIRED_VENDOR) {
-        if (vendorCode == 10002) {
+        if (vendorCode == 9002) {
             Return<void> ret = mCallback->onFingerDown();
             if (!ret.isOk()) {
                 LOG(ERROR) << "FingerDown() error: " << ret.description();
             }
             return true;
-        } else if (vendorCode == 10001) {
+        } else if (vendorCode == 9001) {
             Return<void> ret = mCallback->onFingerUp();
             if (!ret.isOk()) {
                 LOG(ERROR) << "FingerUp() error: " << ret.description();
@@ -130,7 +130,7 @@ Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t v
         }
     }
     LOG(ERROR) << "acquiredInfo: " << acquiredInfo << ", vendorCode: " << vendorCode << "\n";
-    return false;
+    return true;
 }
 
 Return<bool> FingerprintInscreen::handleError(int32_t, int32_t) {
@@ -174,7 +174,7 @@ Return<int32_t> FingerprintInscreen::getPositionY() {
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
-    return 185;
+    return 210;
 }
 
 }  // namespace implementation
