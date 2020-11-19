@@ -94,28 +94,29 @@ Return<void> FingerprintInscreen::onPress() {
     set(FP_GREEN_CIRCLE, "1");
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(48));
-        mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE, 
+        mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
             SEM_PARAM_PRESSED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     }).detach();
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE, 
+    mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
         SEM_PARAM_RELEASED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     set(FP_GREEN_CIRCLE, "0");
     return Void();
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    set(FOD_DIMMING_PATH, "1");
+    std::thread([]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
+        set(FOD_DIMMING_PATH, "1");
+    }).detach();
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
     set(FP_GREEN_CIRCLE, "0");
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(20));
     set(FOD_DIMMING_PATH, "0");
     return Void();
 }
@@ -137,12 +138,11 @@ Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t v
             Return<void> ret = mCallback->onFingerUp();
             if (!ret.isOk()) {
                 LOG(ERROR) << "FingerUp() error: " << ret.description();
-            } else {
-                onRelease();
             }
             return true;
         }
     }
+    LOG(ERROR) << "acquiredInfo: " << acquiredInfo << ", vendorCode: " << vendorCode << "\n";
     return true;
 }
 

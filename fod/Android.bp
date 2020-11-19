@@ -42,11 +42,6 @@ cc_library_static {
     name: "libfod_extension.a70q",
     srcs: ["FodExtension.cpp"],
     include_dirs: [
-        "frameworks/native/services/surfaceflinger/CompositionEngine/include",
-    ],
-    cflags: [
-        "-DREQUEST_FORCE_CALIBRATE",
-        "-DREQUEST_ENROLL_TYPE=0",
-        "-Wno-unused-parameter",
+        "frameworks/native/services/surfaceflinger/CompositionEngine/include"
     ],
 }
