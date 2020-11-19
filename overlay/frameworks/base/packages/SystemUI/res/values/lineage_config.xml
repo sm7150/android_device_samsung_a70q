@@ -17,5 +17,5 @@
          the sensor embedded in the power key and listening all the time
          causes a poor experience. -->
     <bool name="config_fingerprintWakeAndUnlock">false</bool>
-    <color name="config_fodColor">#bfd9d9d9</color>
+    <color name="config_fodColor">#00000000</color>
 </resources>
