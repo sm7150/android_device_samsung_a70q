@@ -37,6 +37,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Radio/RIL
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     use.voice.path.for.pcm.voip=true
+
 # Audio
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     qcom.hw.aac.encoder=true
+
+# Overide NavBar to show
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    qemu.hw.mainkeys=0
