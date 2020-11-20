@@ -73,6 +73,7 @@ static hidl_vec<int8_t> stringToVec(const std::string& str) {
 
 FingerprintInscreen::FingerprintInscreen() {
     mSehBiometricsFingerprintService = ISehBiometricsFingerprint::getService();
+    set(TSP_CMD_PATH, "set_fod_rect,426,1989,654,2217");
     set(MASK_BRIGHTNESS_PATH, "319");
     set(TSP_CMD_PATH, "fod_enable,1,1,0");
 }
@@ -90,6 +91,7 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
+    set(MASK_BRIGHTNESS_PATH, "319");
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(48));
         mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
@@ -99,6 +101,7 @@ Return<void> FingerprintInscreen::onPress() {
 }
 
 Return<void> FingerprintInscreen::onRelease() {
+    set(MASK_BRIGHTNESS_PATH, "0");
     mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE, 
         SEM_PARAM_RELEASED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     return Void();
@@ -114,6 +117,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
 
 Return<void> FingerprintInscreen::onHideFODView() {
     set(FOD_DIMMING_PATH, "0");
+    set(MASK_BRIGHTNESS_PATH, "0");
     return Void();
 }
 
@@ -124,22 +128,24 @@ Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t v
     }
 
     if (acquiredInfo == FINGERPRINT_ACQUIRED_VENDOR) {
-        if (vendorCode == 9002) {
+        if (vendorCode == 10002) {
             Return<void> ret = mCallback->onFingerDown();
             if (!ret.isOk()) {
                 LOG(ERROR) << "FingerDown() error: " << ret.description();
             }
             return true;
-        } else if (vendorCode == 9001) {
+        } else if (vendorCode == 10001) {
             Return<void> ret = mCallback->onFingerUp();
             if (!ret.isOk()) {
                 LOG(ERROR) << "FingerUp() error: " << ret.description();
+            } else {
+                onRelease();
             }
             return true;
         }
     }
     LOG(ERROR) << "acquiredInfo: " << acquiredInfo << ", vendorCode: " << vendorCode << "\n";
-    return true;
+    return false;
 }
 
 Return<bool> FingerprintInscreen::handleError(int32_t, int32_t) {
@@ -175,7 +181,7 @@ Return<int32_t> FingerprintInscreen::getPositionY() {
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
-    return 210;
+    return 190;
 }
 
 }  // namespace implementation
