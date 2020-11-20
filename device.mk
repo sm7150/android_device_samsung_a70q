@@ -30,15 +30,18 @@ TARGET_SCREEN_WIDTH := 1080
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio.primary.sm6150 \
-    audio.primary.sm6150:32 \
-    liba2dpoffload
+    #audio.primary.sm6150 \
+    #audio.primary.sm6150:32 \
+    #liba2dpoffload
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PLATFORM_VNDK_VERSION)/etc/audio_policy_configuration.xml
 
 # Bluetooth
-PRODUCT_PACKAGES += \
-    libbthost_if \
-    audio.bluetooth.default \
-    BluetoothQti
+#PRODUCT_PACKAGES += \
+   # libbthost_if \
+    #audio.bluetooth.default \
+    #BluetoothQti
 
 # Camera
 PRODUCT_PACKAGES += \
