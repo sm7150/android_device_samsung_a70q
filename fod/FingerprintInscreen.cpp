@@ -91,7 +91,6 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    set(MASK_BRIGHTNESS_PATH, "319");
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(48));
         mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
@@ -101,7 +100,6 @@ Return<void> FingerprintInscreen::onPress() {
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    set(MASK_BRIGHTNESS_PATH, "0");
     mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE, 
         SEM_PARAM_RELEASED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     return Void();
@@ -117,7 +115,6 @@ Return<void> FingerprintInscreen::onShowFODView() {
 
 Return<void> FingerprintInscreen::onHideFODView() {
     set(FOD_DIMMING_PATH, "0");
-    set(MASK_BRIGHTNESS_PATH, "0");
     return Void();
 }
 
