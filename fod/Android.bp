@@ -31,11 +31,6 @@ cc_binary {
         "android.hardware.biometrics.fingerprint@2.1",
         "vendor.samsung.hardware.biometrics.fingerprint@3.0",
     ],
-    cflags: [
-        "-DREQUEST_FORCE_CALIBRATE",
-        "-DREQUEST_ENROLL_TYPE=0",
-        "-Wno-unused-parameter",
-    ],
 }
 
 cc_library_static {

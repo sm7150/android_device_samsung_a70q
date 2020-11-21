@@ -100,7 +100,7 @@ Return<void> FingerprintInscreen::onPress() {
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE, 
+    mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
         SEM_PARAM_RELEASED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     return Void();
 }

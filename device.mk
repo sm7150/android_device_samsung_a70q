@@ -47,8 +47,7 @@ PRODUCT_PACKAGES += \
     lineage.biometrics.fingerprint.inscreen@1.0-service.a70q
 
 PRODUCT_COPY_FILES += \
- frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
- vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml \
+    vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -72,8 +71,7 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.qcom.rc \
+    init.qcom.rc
 
 # RIL
 PRODUCT_PACKAGES += \
