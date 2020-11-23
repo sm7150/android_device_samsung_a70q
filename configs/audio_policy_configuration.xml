@@ -141,6 +141,9 @@
         <xi:include href="a2dp_audio_policy_configuration.xml"/>
 
         <!-- Usb Audio HAL -->
+        <xi:include href="usb_audio_policy_configuration.xml"/>
+
+        <!-- Usb Audio HAL -->
         <module name="usb" halVersion="2.0">
             <mixPorts>
                 <mixPort name="usb_accessory output" role="source">
