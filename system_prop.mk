@@ -11,6 +11,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.btstack.avrcp-playstatus.blacklist=true \
     bt.max.hfpclient.connections=1
 
+# Bluetooth Hacks
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.bluetooth.a2dp_offload.supported=false \
+    persist.bluetooth.a2dp_offload.disabled=true \
+    vendor.audio.feature.a2dp_offload.enable=false
+
 # Media
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.aac_51_output_enabled=true \
