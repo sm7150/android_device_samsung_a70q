@@ -27,6 +27,13 @@ on init
     mount none /vendor/lost+found /vendor/overlay bind
 
 on post-fs-data
+    # Tombstones
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+
     # NFC: create /efs/sec_efs/nfc and /efs/nfc for nv storage
     mkdir /efs/sec_efs/nfc 0700 nfc nfc
     mkdir /efs/nfc 0700 nfc nfc
@@ -43,6 +50,37 @@ on post-fs-data
     restorecon --recursive --force /mnt/vendor/efs
     restorecon --recursive --force /mnt/vendor/cpefs
     restorecon --recursive --force /sec_efs
+
+    # Create directory used by audio subsystem
+    mkdir /data/vendor/audio 0770 audio audio
+
+    # Create directory for audio delta files
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
+
+    # Permissions for NXP AMP calibration
+    chown system audio /sys/class/nxp/tfa_cal/status
+    chown system audio /sys/class/nxp/tfa_cal/rdc
+    chown system audio /sys/class/nxp/tfa_cal/temp
+    mkdir /efs/nxp 0770 audioserver audio
+    chown audioserver audio /efs/nxp/temp_cal
+    chown audioserver audio /efs/nxp/rdc_cal
+
+    # Permissions for NXP AMP bigdata
+    chown system audio /sys/class/nxp/tfa_log/data_maxx
+    chown system audio /sys/class/nxp/tfa_log/count_overxmax
+    chown system audio /sys/class/nxp/tfa_log/data_maxt
+    chown system audio /sys/class/nxp/tfa_log/count_overtmax
+    chmod 0440 /sys/class/nxp/tfa_log/data_maxx
+    chmod 0440 /sys/class/nxp/tfa_log/count_overxmax
+    chmod 0440 /sys/class/nxp/tfa_log/data_maxt
+    chmod 0440 /sys/class/nxp/tfa_log/count_overtmax
+
+    # Permissions for audio
+    chown system radio /sys/class/audio/earjack/key_state
+    chown system radio /sys/class/audio/earjack/mic_adc
+    chown system radio /sys/class/audio/earjack/select_jack
+    chown system radio /sys/class/audio/earjack/state
 
 on boot
     # Fingerprint
