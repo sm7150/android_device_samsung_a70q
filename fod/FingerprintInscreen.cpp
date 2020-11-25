@@ -91,7 +91,7 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(48));
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
         mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
             SEM_PARAM_PRESSED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     }).detach();
@@ -106,7 +106,7 @@ Return<void> FingerprintInscreen::onRelease() {
 
 Return<void> FingerprintInscreen::onShowFODView() {
     std::thread([]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(15));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }).detach();
     return Void();
 }
@@ -173,7 +173,7 @@ Return<int32_t> FingerprintInscreen::getPositionY() {
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
-    return 190;
+    return 195;
 }
 
 }  // namespace implementation
