@@ -25,7 +25,6 @@
 
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 
-#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 #define TSP_CMD_PATH "/sys/class/sec/tsp/cmd"
 #define MASK_BRIGHTNESS_PATH "/sys/class/lcd/panel/mask_brightness"
 
@@ -91,7 +90,7 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(15));
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
         mSehBiometricsFingerprintService->sehRequest(SEM_FINGER_STATE,
             SEM_PARAM_PRESSED, stringToVec(SEM_AOSP_FQNAME), FingerprintInscreen::requestResult);
     }).detach();
@@ -106,7 +105,7 @@ Return<void> FingerprintInscreen::onRelease() {
 
 Return<void> FingerprintInscreen::onShowFODView() {
     std::thread([]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }).detach();
     return Void();
 }
