@@ -98,14 +98,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.rc
 
-# RIL
-PRODUCT_PACKAGES += \
-    libjson \
-    librmnetctl \
-    libxml2 \
-    libprotobuf-cpp-full \
-    libtrafficcontrol-spoofer
-
 # Sensor
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl.a70q
