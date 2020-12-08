@@ -25,6 +25,7 @@
 
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 
+#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 #define TSP_CMD_PATH "/sys/class/sec/tsp/cmd"
 #define MASK_BRIGHTNESS_PATH "/sys/class/lcd/panel/mask_brightness"
 
