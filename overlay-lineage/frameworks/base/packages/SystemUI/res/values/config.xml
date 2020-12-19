@@ -14,7 +14,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <resources>
-    <bool name="config_haveHigherAspectRatioScreen">true</bool>
-    <bool name="config_haveNotch">true</bool>
+    <!-- Color of the FOD view -->
+    <!-- we're going to use the circle drawn from kernel, so disable framework green circle -->
+    <color name="config_fodColor">#00000000</color>
 </resources>

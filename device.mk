@@ -7,13 +7,14 @@
 DEVICE_PATH := device/samsung/a70q
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    device/samsung/qcom-common/overlay \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+PRODUCT_PACKAGE_OVERLAYS += \
+    $(DEVICE_PATH)/overlay \
+    $(DEVICE_PATH)/overlay-lineage
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
+PRODUCT_ENFORCE_RRO_TARGETS += *
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(DEVICE_PATH)/overlay-lineage/lineage-sdk \
+    $(DEVICE_PATH)/overlay-lineage/packages/apps/Snap
 
 # Properties
 -include $(LOCAL_PATH)/system_prop.mk

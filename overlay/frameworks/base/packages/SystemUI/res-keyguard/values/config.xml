@@ -4,6 +4,5 @@
  * Copyright (C) 2020 The LineageOS Project
 -->
 <resources>
-    <!-- The bottom margin of the keyguard security container -->
-    <dimen name="kg_security_container_min_bottom_margin">380px</dimen>
+    <integer name="config_chargingFastThreshold">10800000</integer>
 </resources>
