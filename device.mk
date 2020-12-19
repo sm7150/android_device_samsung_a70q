@@ -61,6 +61,9 @@ PRODUCT_PACKAGES += \
     SamsungDoze
 
 # Fingerprint feature
+TARGET_HAS_FOD := true
+EXTRA_FOD_ANIMATIONS := true
+
 PRODUCT_PACKAGES += \
     lineage.biometrics.fingerprint.inscreen@1.0-service.a70q
 
