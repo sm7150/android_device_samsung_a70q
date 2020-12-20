@@ -71,12 +71,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
     vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service \
-    android.hardware.light@2.0-impl \
-    lights.qcom
-
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
