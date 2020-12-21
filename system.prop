@@ -33,14 +33,11 @@ mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
 
-# Netflix custom property
-ro.netflix.bsp_rev=Q6150-17263-1
-
 # Radio
 persist.vendor.radio.atfwd.start=true
 
-# Ril
-ro.product_ship=true
+# Netflix custom property
+ro.netflix.bsp_rev=Q6150-17263-1
 
 # SDCard
 ro.sys.sdcardfs=true
