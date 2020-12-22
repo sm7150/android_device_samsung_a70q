@@ -45,18 +45,8 @@ on post-fs-data
     restorecon --recursive --force /sec_efs
 
 on boot
-    # Permissions for audio
-    chown system radio /sys/class/audio/earjack/key_state
-    chown system radio /sys/class/audio/earjack/mic_adc
-    chown system radio /sys/class/audio/earjack/select_jack
-    chown system radio /sys/class/audio/earjack/state
-
-    # Audio Subsystem
-    mkdir /data/vendor/audio 0770 audio audio
-
-    # IMS Directory
-    mkdir /data/shared 0755
-    chown system system /data/shared
+    # MirrorLink permission
+    mkdir /dev/socket/mlaudio 0770 audioserver system
 
     # MTP device permission
     chmod 0660 /dev/usb_mtp_gadget
