@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/samsung/a70q
+DEVICE_PATH := device/samsung/r1q
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
@@ -62,7 +62,7 @@ TARGET_HAS_FOD := true
 EXTRA_FOD_ANIMATIONS := true
 
 PRODUCT_PACKAGES += \
-    lineage.biometrics.fingerprint.inscreen@1.0-service.a70q
+    lineage.biometrics.fingerprint.inscreen@1.0-service.r1q
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
@@ -100,7 +100,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensor
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl.a70q
+    android.hardware.sensors@1.0-impl.r1q
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \

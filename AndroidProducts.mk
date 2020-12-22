@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_a70q.mk
+    $(LOCAL_DIR)/lineage_r1q.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_a70q-user \
-    lineage_a70q-userdebug \
-    lineage_a70q-eng
+    lineage_r1q-user \
+    lineage_r1q-userdebug \
+    lineage_r1q-eng
