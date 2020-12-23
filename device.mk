@@ -16,9 +16,6 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(DEVICE_PATH)/overlay-lineage/lineage-sdk \
     $(DEVICE_PATH)/overlay-lineage/packages/apps/Snap
 
-# Properties
--include $(LOCAL_PATH)/system_prop.mk
-
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -96,6 +93,10 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.rc
+
+# Skip Mount
+PRODUCT_COPY_FILES += \
+    build/target/product/gsi/skip_mount.cfg:system/etc/init/config/skip_mount.cfg
 
 # Sensor
 PRODUCT_PACKAGES += \
