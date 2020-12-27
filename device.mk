@@ -72,6 +72,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
     vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
+# Override Manifest
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/vendor_override_manifest.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/vintf/manifest/vendor_override_manifest.xml
+
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
@@ -111,6 +115,24 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml
+
+# Vendor Services - DISABLED
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/pa_daemon_qsee.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.media.converter@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.miscpower@2.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.snap@1.1-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.arcounter@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.atn@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.ddar@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.hdm@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.iccc@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.payment@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.tima@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.ucm@1.0-service.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vk_common.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vk_qsee.rc \
+    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/wsm-service.rc
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
