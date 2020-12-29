@@ -45,6 +45,14 @@ on post-fs-data
     restorecon --recursive --force /sec_efs
 
 on boot
+    # Camera Motor Permissions
+    chown system system /sys/class/sec/sliding_motor/enable
+
+    setprop persist.camera.gyro.disable 0
+
+    # Folder for Camera
+    mkdir /data/vendor/camera 0770 camera camera
+
     # Permissions for audio
     chown system radio /sys/class/audio/earjack/key_state
     chown system radio /sys/class/audio/earjack/mic_adc
