@@ -79,12 +79,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
-    android.hardware.power@1.0-service \
-    power.qcom:64
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.rc
@@ -125,14 +119,5 @@ PRODUCT_PACKAGES += \
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk_package
-
-# Wifi
-PRODUCT_PACKAGES += \
-    hostapd \
-    libwifi-hal-ctrl \
-    libwifi-hal-qcom \
-    libwpa_client \
-    wpa_supplicant \
-    wpa_supplicant.conf
 
 PRODUCT_TARGET_VNDK_VERSION := 29
