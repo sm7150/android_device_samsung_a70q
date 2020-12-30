@@ -84,7 +84,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.3-service.samsung-r1q
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/powerhint.json
+    $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/powerhint.json
 
 # Ramdisk
 PRODUCT_PACKAGES += \
