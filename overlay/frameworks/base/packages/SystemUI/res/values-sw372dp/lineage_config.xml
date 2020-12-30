@@ -4,6 +4,6 @@
  * Copyright (C) 2020 The LineageOS Project
 -->
 <resources>
-    <dimen name="rounded_corner_radius">39dp</dimen>
-    <dimen name="rounded_corner_content_padding">18dp</dimen>
+    <dimen name="rounded_corner_radius">40dp</dimen>
+    <dimen name="rounded_corner_content_padding">16dp</dimen>
 </resources>
