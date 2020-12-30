@@ -79,6 +79,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.3-service.samsung-r1q
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/powerhint.json
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.rc
