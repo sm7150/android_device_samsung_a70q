@@ -30,8 +30,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
@@ -49,9 +47,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/audio_policy_configuration.xml
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -72,10 +67,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
     vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
-# Override Manifest
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/vendor_override_manifest.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/vintf/manifest/vendor_override_manifest.xml
-
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
@@ -94,9 +85,10 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
-    android.hardware.power@1.0-service \
-    power.qcom:64
+    android.hardware.power@1.3-service.samsung-a70q
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/powerhint.json
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -111,28 +103,8 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl.a70q
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml
-
-# Vendor Services - DISABLED
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/pa_daemon_qsee.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.media.converter@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.miscpower@2.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.snap@1.1-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.arcounter@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.atn@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.ddar@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.hdm@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.iccc@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.payment@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.tima@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vendor.samsung.hardware.tlc.ucm@1.0-service.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vk_common.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/vk_qsee.rc \
-    $(DEVICE_PATH)/etc/empty:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/init/wsm-service.rc
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -156,14 +128,5 @@ PRODUCT_PACKAGES += \
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk_package
-
-# Wifi
-PRODUCT_PACKAGES += \
-    hostapd \
-    libwifi-hal-ctrl \
-    libwifi-hal-qcom \
-    libwpa_client \
-    wpa_supplicant \
-    wpa_supplicant.conf
 
 PRODUCT_TARGET_VNDK_VERSION := 29

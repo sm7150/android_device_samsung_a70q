@@ -47,7 +47,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/samsung/a70q
-TARGET_KERNEL_CONFIG := fire_defconfig
+TARGET_KERNEL_CONFIG := a70q_eur_open_defconfig
 BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_CLANG_COMPILE := true
 
@@ -57,7 +57,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno612
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
-TARGET_EXCLUDES_AUDIOFX := true
 
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
@@ -146,6 +145,3 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy/vendor
-
-# Inherit from the proprietary version
--include vendor/samsung/a70q/BoardConfigVendor.mk
