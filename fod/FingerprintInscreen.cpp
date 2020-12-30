@@ -169,7 +169,7 @@ Return<int32_t> FingerprintInscreen::getPositionX() {
 }
 
 Return<int32_t> FingerprintInscreen::getPositionY() {
-    return 2080;
+    return 2025;
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
