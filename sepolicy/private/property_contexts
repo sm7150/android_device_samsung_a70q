@@ -1,1 +1,6 @@
 tas.smartamp.disable        u:object_r:audio_prop:s0
+audio.offload.              u:object_r:audio_prop:s0
+av.offload.                 u:object_r:audio_prop:s0
+qcom.hw.aac.                u:object_r:audio_prop:s0
+ro.qc.sdk.audio.            u:object_r:audio_prop:s0
+tunnel.audio.               u:object_r:audio_prop:s0
