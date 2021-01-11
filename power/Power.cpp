@@ -192,7 +192,7 @@ Return<void> Power::setProfile(PowerProfile profile) {
 
 Return<void> Power::switchDT2W(bool dt2w) {
     updateHint("DOUBLE_TAP_TO_WAKE", dt2w);
-    std::this_thread::sleep_for(20ms);
+    std::this_thread::sleep_for(10ms);
 
     return Void();
 }
