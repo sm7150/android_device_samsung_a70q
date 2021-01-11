@@ -35,6 +35,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/audio_policy_configuration.xml
 
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/bluetooth/aptx/libaptX_encoder.so:$(TARGET_COPY_OUT_PRODUCT)/lib64/libaptX_encoder.so
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap
