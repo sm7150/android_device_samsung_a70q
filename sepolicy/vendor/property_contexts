@@ -1,0 +1,12 @@
+# http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-1496
+persist.cache_status_64         u:object_r:cache_status_prop:s0
+persist.cache_status_32         u:object_r:cache_status_prop:s0
+# https://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-3271
+persist.cache_integrity_64         u:object_r:cache_status_prop:s0
+persist.cache_integrity_32         u:object_r:cache_status_prop:s0
+
+# http://mobilerndhub.sec.samsung.net/hub/site/seandroid/board/O_review_request/view/23148393
+cnss_diag.service                   u:object_r:sec_cnss_diag_prop:s0
+
+# http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-2110
+persist.camera.            u:object_r:vendor_camera_prop:s0
