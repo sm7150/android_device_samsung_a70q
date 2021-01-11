@@ -5,6 +5,7 @@
 #
 
 DEVICE_PATH := device/samsung/a70q
+PRODUCT_TARGET_VNDK_VERSION := 29
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
@@ -19,6 +20,9 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# A list of dpis to select prebuilt apk, in precedence order.
+PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
@@ -142,5 +146,3 @@ PRODUCT_PACKAGES += \
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk_package
-
-PRODUCT_TARGET_VNDK_VERSION := 29
