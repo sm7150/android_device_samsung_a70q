@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/samsung/a70q
+DEVICE_PATH := device/samsung/r1q
 PRODUCT_TARGET_VNDK_VERSION := 29
 
 # Overlays
