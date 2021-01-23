@@ -86,10 +86,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.qcom.rc
 
-# Livedisplay
-PRODUCT_PACKAGES += \
-    lineage.livedisplay@2.0-service.samsung-qcom
-
 # Skip Mount
 PRODUCT_COPY_FILES += \
     build/target/product/gsi/skip_mount.cfg:system/etc/init/config/skip_mount.cfg
