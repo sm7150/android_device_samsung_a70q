@@ -12,6 +12,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 # Inherit from r1q device
 $(call inherit-product, device/samsung/r1q/device.mk)
 
+# Inherit from r1q camera
+$(call inherit-product, device/samsung/camera/r1q/Camera_r1q.mk)
+
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
