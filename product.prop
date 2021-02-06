@@ -3,9 +3,5 @@ ro.bluetooth.a2dp_offload.supported=false
 persist.bluetooth.a2dp_offload.disabled=true
 vendor.audio.feature.a2dp_offload.enable=false
 
-# Audio
-vendor.audio.feature.multi_voice_session.enable=true
-vendor.audio.feature.usb_offload.enable=true
-
 # USAP
 persist.device_config.runtime_native.usap_pool_enabled=true
